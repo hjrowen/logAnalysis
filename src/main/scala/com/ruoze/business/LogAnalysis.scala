@@ -27,7 +27,7 @@ object LogAnalysis extends MyLoggin {
     val rowRDD = empRDD
       .mapPartitions(its =>
         for (it <- its) yield EmpParse.paresContent(it, isCompatibleExceptionData.value))
-      .filter(_ != EmpParse.ERROR_ROW)
+      .filter(_ != EmpParse.errorRow)
 
     val empDF = spark.createDataFrame(rowRDD, EmpParse.struct)
     empDF.show(false)

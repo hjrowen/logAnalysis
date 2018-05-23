@@ -16,8 +16,9 @@ object EmpParse extends MyLoggin {
     StructField("comm", DoubleType, nullable = true),
     StructField("deptno", StringType, nullable = true)))
 
-  val STRUCT_SIZE = 8
+  private val STRUCT_SIZE = struct.length
   val ERROR_ROW = Row(0)
+  def errorRow: Row = ERROR_ROW
 
   /***
     * 对日志记录进行格式化
